@@ -33,8 +33,10 @@
                                              </p>
 
                                             @endif
-                                            <a class="mt-3 text-indigo-500 inline-flex items-center" href="{{route('workout',$workout)}}">Ver entrenamiento</a>
-
+                                            <p class="mt-4">
+                                              <a class="bg-gray-800 text-white rounded px-4 py-2" 
+                                               href="{{route('workout',$workout)}}">Ver entrenamiento</a>
+                                            </p>
                                         </div>
 
                                         

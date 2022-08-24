@@ -34,6 +34,9 @@ Route::controller(PageController::class)->group(function () {
     Route::get('/search',                                    'search')->middleware(['auth'])->name('search');
     Route::delete('/delete-athlete/{user}',                  'deleteAthlete')->middleware(['auth'])->name('delete-athlete');
     Route::delete('/delete-workout/{workout}',               'deleteWorkout')->middleware(['auth'])->name('delete-workout');
+
 }); 
+
+//Route::get('send-workout-email', [SendEmailController::class, 'emailWorkout']);
 
 require __DIR__.'/auth.php';

@@ -7,6 +7,10 @@ use App\Models\Workout;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use PDF;
+use Mail;
+ 
+use App\Mail\NotifyWorkout;
+use App\Mail\NotifyRegister;
 
 class PageController extends Controller
 {
@@ -192,6 +196,9 @@ class PageController extends Controller
 
         ]);
 
+        $email_usuario=User::where('id','=',$request->athlete)->first();
+
+        Mail::to($email_usuario->email)->send(new NotifyWorkout());
 
         return redirect()->route('dashboard');
 
@@ -293,7 +300,7 @@ class PageController extends Controller
         $request->validate([
 
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:users,email',
             'password' => 'required',
             'image' => 'nullable|image|mimes:jpg,png,jpeg,gif|max:6144',
             'notes' => 'nullable'
@@ -324,9 +331,18 @@ class PageController extends Controller
 
         ]);
 
-        
+        $mailData = [
+            'email' => $request->email,
+            'password' => $request->password
+        ];
+
+        Mail::to($request->email)->send(new NotifyRegister($mailData));
+
         return redirect()->route('dashboard');
 
     }
+
+
+    
 
 }
