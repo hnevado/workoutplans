@@ -15,7 +15,7 @@
                 
                  <form method="POST" 
                        enctype="multipart/form-data" 
-                       action="{{route('storeathlete')}}" 
+                       action="{{route('updateathlete', $user)}}" 
                        autocomplete="off">
                        @method('PUT')
                        @include("coach/forms/_create_athlete_form")

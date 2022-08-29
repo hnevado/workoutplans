@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class NotifyRegister extends Mailable
+class NotifyUpdate extends Mailable
 {
     use Queueable, SerializesModels;
     public $mailData;
@@ -29,7 +29,6 @@ class NotifyRegister extends Mailable
      */
     public function build()
     {
-       
-        return $this->subject('¡Bienvenido a WorkoutPlans!')->view('email.sendregister')->with('mailData', $this->mailData);
+        return $this->subject('WorkoutPlans - Perfil actualizado')->view('email.updateprofile')->with('mailData', $this->mailData);
     }
 }

@@ -11,6 +11,7 @@ use Mail;
  
 use App\Mail\NotifyWorkout;
 use App\Mail\NotifyRegister;
+use App\Mail\NotifyUpdate;
 
 class PageController extends Controller
 {
@@ -114,8 +115,10 @@ class PageController extends Controller
     public function workout(Workout $workout)
     {
 
-        return view("workout", ['workout' => $workout]);
-
+        if ($workout->coach == Auth::user()->id) 
+          return view("workout", ['workout' => $workout]);
+        
+        abort(404);
     }
 
     public function editWorkout(Workout $workout)
@@ -123,9 +126,12 @@ class PageController extends Controller
 
         $usuario=Auth::user();
         $atletas=User::where('coach','=',$usuario->id)->orderBy('name', 'asc')->latest()->get();
-        
-        return view("coach/editWorkout", ['workout' => $workout, 'atletas' => $atletas]);
 
+
+        if ($workout->coach == Auth::user()->id) 
+            return view("coach/editWorkout", ['workout' => $workout, 'atletas' => $atletas]);
+
+        abort(404);
     }
 
     public function createWorkout(Workout $workout)
@@ -142,15 +148,20 @@ class PageController extends Controller
 
         $usuario=Auth::user();
 
-        $workout = Workout::find($workout->id);
-        $newWorkout = $workout->replicate();
-        $newWorkout->athlete = NULL;
-        $newWorkout->save();
+        if ($workout->coach == Auth::user()->id) 
+        {
+            $workout = Workout::find($workout->id);
+            $newWorkout = $workout->replicate();
+            $newWorkout->athlete = NULL;
+            $newWorkout->save();
 
-        
-        $atletas=User::where('coach','=',$usuario->id)->orderBy('name', 'asc')->latest()->get();
-        
-        return view("coach/editWorkout", ['workout' => $newWorkout, 'atletas' => $atletas]);
+            
+            $atletas=User::where('coach','=',$usuario->id)->orderBy('name', 'asc')->latest()->get();
+            
+            return view("coach/editWorkout", ['workout' => $newWorkout, 'atletas' => $atletas]);
+        }
+
+        abort(404);
 
     } 
 
@@ -268,15 +279,14 @@ class PageController extends Controller
 
     }
 
-
     public function editAthlete (User $user)
     {
 
 
+        if ($user->coach == Auth::user()->id) 
+          return view("coach/editAthlete", ['user' => $user]);
 
-        return view("coach/editAthlete", ['user' => $user]);
-
-
+        abort(404);
     }
 
 
@@ -293,6 +303,68 @@ class PageController extends Controller
 
     }
 
+
+    public function updateathlete(User $user, Request $request)
+    {
+
+        if ($user->coach == Auth::user()->id)
+        {
+         
+            $request->validate([
+
+                'name' => 'required',
+                'email' => 'required|unique:users,email,'.$user->id,
+                'image' => 'nullable|image|mimes:jpg,png,jpeg,gif|max:6144',
+                'notes' => 'nullable'
+
+            ]);
+
+            if (!is_null($request->image))
+            {
+
+                $image_path = $request->file('image')->store('img', 'public');
+            }
+            else 
+            $image_path = NULL;
+
+
+            if (is_null($request->password))
+            {
+
+                $user->update([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'image' => $image_path,
+                    'notes' => $request->notes,
+                ]);
+
+            }
+            else
+            {
+                //Ha actualizado su contraseña y le enviamos un email con sus nuevas credenciales
+                $user->update([
+                        'name' => $request->name,
+                        'email' => $request->email,
+                        'password' => Hash::make($request->password),
+                        'image' => $image_path,
+                        'notes' => $request->notes,
+                    ]);
+                
+                    $mailData = [
+                        'email' => $request->email,
+                        'password' => $request->password
+                    ];
+
+                    Mail::to($request->email)->send(new NotifyUpdate($mailData));
+
+            }
+
+       }
+
+       return redirect()->route('dashboard');
+
+
+    }
 
     public function storeathlete(Request $request)
     {
