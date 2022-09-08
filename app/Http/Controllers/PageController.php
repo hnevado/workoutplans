@@ -115,7 +115,7 @@ class PageController extends Controller
     public function workout(Workout $workout)
     {
 
-        if ($workout->coach == Auth::user()->id) 
+        if ($workout->coach == Auth::user()->id || $workout->athlete == Auth::user()->id) 
           return view("workout", ['workout' => $workout]);
         
         abort(404);
