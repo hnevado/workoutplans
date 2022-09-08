@@ -11,9 +11,12 @@ class SadIcon extends Component
      *
      * @return void
      */
-    public function __construct()
+
+    public $feedback;
+
+    public function __construct($feedback = '')
     {
-        //
+        $this->feedback = $feedback;
     }
 
     /**

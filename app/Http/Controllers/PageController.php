@@ -166,6 +166,53 @@ class PageController extends Controller
     } 
 
 
+    public function storefeedbackmonday(Request $request, Workout $workout)
+    {
+
+
+        if ($workout->athlete == Auth::user()->id) 
+        {
+            $request->validate([
+
+                'feedback_monday' => 'required|numeric'
+
+            ]);
+
+            $workout->update([
+                'feedback_monday' => $request->feedback_monday
+            ]);
+
+            return back();
+         }
+         else 
+           abort(404);
+
+
+    }
+
+    public function storefeedbacktuesday(Request $request, Workout $workout)
+    {
+
+
+        if ($workout->athlete == Auth::user()->id) 
+        {
+            $request->validate([
+
+                'feedback_tuesday' => 'required|numeric'
+
+            ]);
+
+            $workout->update([
+                'feedback_tuesday' => $request->feedback_tuesday
+            ]);
+
+            return back();
+         }
+         else 
+           abort(404);
+
+
+    }
 
     public function storeworkout(Request $request)
     {

@@ -44,12 +44,20 @@
                   
                        @if (is_null($workout->feedback_monday))
                         
-                       <p class="mt-10 mb-4"><hr class="pt-4" />¿Qué tal el entrenamiento?</p>
-                         
-                         <x-happy-icon/>
-                         <x-normal-icon/> 
-                         <x-sad-icon/>
-                          
+                       <hr class="mt-10 pt-4" />
+                       <p class="mb-2">¿Qué tal el entrenamiento?</p>
+                         <form method="POST" action="{{route('storefeedbackmonday',$workout)}}">
+                          @method('PUT')
+                          @csrf 
+                          <input type="number" name="feedback_monday" class="hidden">
+                          <x-happy-icon feedback="feedback_monday"/>
+                          <x-normal-icon feedback="feedback_monday"/> 
+                          <x-sad-icon feedback="feedback_monday"/>
+                          <button 
+                           type="submit"
+                           class="mt-4 border border-black text-xs text-white bg-black p-1 rounded hover:bg-white hover:text-black">Enviar feedback</button>
+                           <p class="mt-2 text-xs text-red-600">@error('feedback_monday') {{ $message }} @enderror</p>
+                          </form>
                        @else 
                         <p class="mt-10 mb-4">
                          @if ($workout->feedback_monday == 0)
@@ -73,11 +81,21 @@
 
                        @if (is_null($workout->feedback_tuesday))
                         
-                       <p class="mt-10 mb-4"><hr class="pt-4" />¿Qué tal el entrenamiento?</p>
+                       <hr class="mt-10 pt-4" />
+                       <p class="mb-2">¿Qué tal el entrenamiento?</p>
                          
-                         <x-happy-icon/>
-                         <x-normal-icon/> 
-                         <x-sad-icon/>
+                       <form method="POST" action="{{route('storefeedbacktuesday',$workout)}}">
+                          @method('PUT')
+                          @csrf 
+                          <input type="number" name="feedback_tuesday" class="hidden">
+                          <x-happy-icon feedback="feedback_tuesday"/>
+                          <x-normal-icon feedback="feedback_tuesday"/> 
+                          <x-sad-icon feedback="feedback_tuesday"/>
+                          <button 
+                           type="submit"
+                           class="mt-4 border border-black text-xs text-white bg-black p-1 rounded hover:bg-white hover:text-black">Enviar feedback</button>
+                           <p class="mt-2 text-xs text-red-600">@error('feedback_tuesday') {{ $message }} @enderror</p>
+                          </form>
                           
                        @else 
                         <p class="mt-10 mb-4">
@@ -101,11 +119,12 @@
                        {!! nl2br(e($workout->training_wednesday)) !!}
                        @if (is_null($workout->feedback_wednesday))
                         
-                       <p class="mt-10 mb-4"><hr class="pt-4" />¿Qué tal el entrenamiento?</p>
+                       <hr class="mt-10 pt-4" />
+                       <p class="mb-2">¿Qué tal el entrenamiento?</p>
                          
-                         <x-happy-icon/>
-                         <x-normal-icon/> 
-                         <x-sad-icon/>
+                       <x-happy-icon feedback="feedback_wednesday"/>
+                       <x-normal-icon feedback="feedback_wednesday"/> 
+                       <x-sad-icon feedback="feedback_wednesday"/>
                           
                        @else 
                         <p class="mt-10 mb-4">
@@ -128,11 +147,12 @@
                        {!! nl2br(e($workout->training_thursday)) !!}
                        @if (is_null($workout->feedback_thursday))
                         
-                       <p class="mt-10 mb-4"><hr class="pt-4" />¿Qué tal el entrenamiento?</p>
+                       <hr class="mt-10 pt-4" />
+                       <p class="mb-2">¿Qué tal el entrenamiento?</p>
                          
-                         <x-happy-icon/>
-                         <x-normal-icon/> 
-                         <x-sad-icon/>
+                       <x-happy-icon feedback="feedback_thursday"/>
+                       <x-normal-icon feedback="feedback_thursday"/> 
+                       <x-sad-icon feedback="feedback_thursday"/>
                           
                        @else 
                         <p class="mt-10 mb-4">
@@ -156,11 +176,12 @@
                        {!! nl2br(e($workout->training_friday)) !!}
                        @if (is_null($workout->feedback_friday))
                         
-                       <p class="mt-10 mb-4"><hr class="pt-4" />¿Qué tal el entrenamiento?</p>
+                       <hr class="mt-10 pt-4" />
+                       <p class="mb-2">¿Qué tal el entrenamiento?</p>
                          
-                         <x-happy-icon/>
-                         <x-normal-icon/> 
-                         <x-sad-icon/>
+                       <x-happy-icon feedback="feedback_friday"/>
+                       <x-normal-icon feedback="feedback_friday"/> 
+                       <x-sad-icon feedback="feedback_friday"/>
                           
                        @else 
                         <p class="mt-10 mb-4">
@@ -184,11 +205,12 @@
                        {!! nl2br(e($workout->training_saturday)) !!}
                        @if (is_null($workout->feedback_saturday))
                         
-                       <p class="mt-10 mb-4"><hr class="pt-4" />¿Qué tal el entrenamiento?</p>
+                       <hr class="mt-10 pt-4" />
+                       <p class="mb-2">¿Qué tal el entrenamiento?</p>
                          
-                         <x-happy-icon/>
-                         <x-normal-icon/> 
-                         <x-sad-icon/>
+                       <x-happy-icon feedback="feedback_saturday"/>
+                       <x-normal-icon feedback="feedback_saturday"/> 
+                       <x-sad-icon feedback="feedback_saturday"/>
                           
                        @else 
                         <p class="mt-10 mb-4">
@@ -214,11 +236,12 @@
                        {!! nl2br(e($workout->training_sunday)) !!}
                        @if (is_null($workout->feedback_sunday))
                         
-                       <p class="mt-10 mb-4"> <hr class="pt-4" />¿Qué tal el entrenamiento?</p>
+                       <hr class="mt-10 pt-4" />
+                       <p class="mb-2">¿Qué tal el entrenamiento?</p>
                          
-                         <x-happy-icon/>
-                         <x-normal-icon/> 
-                         <x-sad-icon/>
+                       <x-happy-icon feedback="feedback_sunday"/>
+                       <x-normal-icon feedback="feedback_sunday"/> 
+                       <x-sad-icon feedback="feedback_sunday"/>
                           
                        @else 
                         <p class="mt-10 mb-4">

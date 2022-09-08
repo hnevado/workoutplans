@@ -28,6 +28,8 @@ Route::controller(PageController::class)->group(function () {
     Route::get('/edit-workout/{workout}',                    'editWorkout')->middleware(['auth'])->name('edit-workout');
     Route::post('/storeathlete',                             'storeathlete')->middleware(['auth'])->name('storeathlete');
     Route::post('/storeworkout',                             'storeworkout')->middleware(['auth'])->name('storeworkout');
+    Route::put('/storefeedbackmonday/{workout}',             'storefeedbackmonday')->middleware(['auth'])->name('storefeedbackmonday');
+    Route::put('/storefeedbacktuesday/{workout}',             'storefeedbacktuesday')->middleware(['auth'])->name('storefeedbacktuesday');
     Route::put('/updateathlete/{user}',                       'updateathlete')->middleware(['auth'])->name('updateathlete');
     Route::put('/updateworkout/{workout}',                    'updateworkout')->middleware(['auth'])->name('updateworkout');
     Route::get('/export/{workout}',                          'export')->middleware(['auth'])->name("export");

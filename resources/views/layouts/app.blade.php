@@ -69,6 +69,18 @@
 
                 });
 
+                $(".icono_feedback").click(function() {
+
+                    let feedback=$(this).attr("data-name");
+                    let tipo_feedback=$(this).attr("data-id");
+                    //console.log(tipo_feedback);
+                    $("input[name='"+feedback+"']").val(tipo_feedback);
+                    
+                    $("img[data-name='"+feedback+"']").removeClass("bg-white rounded-full");
+                    
+                    $(this).addClass("bg-white rounded-full");
+                });
+
         </script>
     </body>
 </html>
