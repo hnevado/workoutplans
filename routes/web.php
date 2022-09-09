@@ -29,7 +29,12 @@ Route::controller(PageController::class)->group(function () {
     Route::post('/storeathlete',                             'storeathlete')->middleware(['auth'])->name('storeathlete');
     Route::post('/storeworkout',                             'storeworkout')->middleware(['auth'])->name('storeworkout');
     Route::put('/storefeedbackmonday/{workout}',             'storefeedbackmonday')->middleware(['auth'])->name('storefeedbackmonday');
-    Route::put('/storefeedbacktuesday/{workout}',             'storefeedbacktuesday')->middleware(['auth'])->name('storefeedbacktuesday');
+    Route::put('/storefeedbacktuesday/{workout}',            'storefeedbacktuesday')->middleware(['auth'])->name('storefeedbacktuesday');
+    Route::put('/storefeedbackwednesday/{workout}',          'storefeedbackwednesday')->middleware(['auth'])->name('storefeedbackwednesday');
+    Route::put('/storefeedbackthursday/{workout}',           'storefeedbackthursday')->middleware(['auth'])->name('storefeedbackthursday');
+    Route::put('/storefeedbackfriday/{workout}',             'storefeedbackfriday')->middleware(['auth'])->name('storefeedbackfriday');
+    Route::put('/storefeedbacksaturday/{workout}',           'storefeedbacksaturday')->middleware(['auth'])->name('storefeedbacksaturday');
+    Route::put('/storefeedbacksunday/{workout}',              'storefeedbacksunday')->middleware(['auth'])->name('storefeedbacksunday');
     Route::put('/updateathlete/{user}',                       'updateathlete')->middleware(['auth'])->name('updateathlete');
     Route::put('/updateworkout/{workout}',                    'updateworkout')->middleware(['auth'])->name('updateworkout');
     Route::get('/export/{workout}',                          'export')->middleware(['auth'])->name("export");

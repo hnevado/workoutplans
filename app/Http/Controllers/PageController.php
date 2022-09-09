@@ -214,6 +214,129 @@ class PageController extends Controller
 
     }
 
+    public function storefeedbackwednesday(Request $request, Workout $workout)
+    {
+
+
+        if ($workout->athlete == Auth::user()->id) 
+        {
+            $request->validate([
+
+                'feedback_wednesday' => 'required|numeric'
+
+            ]);
+
+            $workout->update([
+                'feedback_wednesday' => $request->feedback_wednesday
+            ]);
+
+            return back();
+         }
+         else 
+           abort(404);
+
+
+    }
+
+    public function storefeedbackthursday(Request $request, Workout $workout)
+    {
+
+
+        if ($workout->athlete == Auth::user()->id) 
+        {
+            $request->validate([
+
+                'feedback_thursday' => 'required|numeric'
+
+            ]);
+
+            $workout->update([
+                'feedback_thursday' => $request->feedback_thursday
+            ]);
+
+            return back();
+         }
+         else 
+           abort(404);
+
+
+    }
+
+
+    public function storefeedbackfriday(Request $request, Workout $workout)
+    {
+
+
+        if ($workout->athlete == Auth::user()->id) 
+        {
+            $request->validate([
+
+                'feedback_friday' => 'required|numeric'
+
+            ]);
+
+            $workout->update([
+                'feedback_friday' => $request->feedback_friday
+            ]);
+
+            return back();
+         }
+         else 
+           abort(404);
+
+
+    }
+
+
+    public function storefeedbacksaturday(Request $request, Workout $workout)
+    {
+
+
+        if ($workout->athlete == Auth::user()->id) 
+        {
+            $request->validate([
+
+                'feedback_saturday' => 'required|numeric'
+
+            ]);
+
+            $workout->update([
+                'feedback_saturday' => $request->feedback_saturday
+            ]);
+
+            return back();
+         }
+         else 
+           abort(404);
+
+
+    }
+
+
+    public function storefeedbacksunday(Request $request, Workout $workout)
+    {
+
+
+        if ($workout->athlete == Auth::user()->id) 
+        {
+            $request->validate([
+
+                'feedback_sunday' => 'required|numeric'
+
+            ]);
+
+            $workout->update([
+                'feedback_sunday' => $request->feedback_sunday
+            ]);
+
+            return back();
+         }
+         else 
+           abort(404);
+
+
+    }
+
     public function storeworkout(Request $request)
     {
 

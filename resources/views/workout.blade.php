@@ -95,7 +95,7 @@
                            type="submit"
                            class="mt-4 border border-black text-xs text-white bg-black p-1 rounded hover:bg-white hover:text-black">Enviar feedback</button>
                            <p class="mt-2 text-xs text-red-600">@error('feedback_tuesday') {{ $message }} @enderror</p>
-                          </form>
+                        </form>
                           
                        @else 
                         <p class="mt-10 mb-4">
@@ -122,9 +122,18 @@
                        <hr class="mt-10 pt-4" />
                        <p class="mb-2">¿Qué tal el entrenamiento?</p>
                          
-                       <x-happy-icon feedback="feedback_wednesday"/>
-                       <x-normal-icon feedback="feedback_wednesday"/> 
-                       <x-sad-icon feedback="feedback_wednesday"/>
+                       <form method="POST" action="{{route('storefeedbackwednesday',$workout)}}">
+                          @method('PUT')
+                          @csrf 
+                          <input type="number" name="feedback_wednesday" class="hidden">
+                          <x-happy-icon feedback="feedback_wednesday"/>
+                          <x-normal-icon feedback="feedback_wednesday"/> 
+                          <x-sad-icon feedback="feedback_wednesday"/>
+                          <button 
+                           type="submit"
+                           class="mt-4 border border-black text-xs text-white bg-black p-1 rounded hover:bg-white hover:text-black">Enviar feedback</button>
+                           <p class="mt-2 text-xs text-red-600">@error('feedback_wednesday') {{ $message }} @enderror</p>
+                        </form>
                           
                        @else 
                         <p class="mt-10 mb-4">
@@ -150,9 +159,18 @@
                        <hr class="mt-10 pt-4" />
                        <p class="mb-2">¿Qué tal el entrenamiento?</p>
                          
-                       <x-happy-icon feedback="feedback_thursday"/>
-                       <x-normal-icon feedback="feedback_thursday"/> 
-                       <x-sad-icon feedback="feedback_thursday"/>
+                       <form method="POST" action="{{route('storefeedbackthursday',$workout)}}">
+                          @method('PUT')
+                          @csrf 
+                          <input type="number" name="feedback_thursday" class="hidden">
+                          <x-happy-icon feedback="feedback_thursday"/>
+                          <x-normal-icon feedback="feedback_thursday"/> 
+                          <x-sad-icon feedback="feedback_thursday"/>
+                          <button 
+                           type="submit"
+                           class="mt-4 border border-black text-xs text-white bg-black p-1 rounded hover:bg-white hover:text-black">Enviar feedback</button>
+                           <p class="mt-2 text-xs text-red-600">@error('feedback_thursday') {{ $message }} @enderror</p>
+                        </form>
                           
                        @else 
                         <p class="mt-10 mb-4">
@@ -179,9 +197,18 @@
                        <hr class="mt-10 pt-4" />
                        <p class="mb-2">¿Qué tal el entrenamiento?</p>
                          
-                       <x-happy-icon feedback="feedback_friday"/>
-                       <x-normal-icon feedback="feedback_friday"/> 
-                       <x-sad-icon feedback="feedback_friday"/>
+                       <form method="POST" action="{{route('storefeedbackfriday',$workout)}}">
+                          @method('PUT')
+                          @csrf 
+                          <input type="number" name="feedback_friday" class="hidden">
+                          <x-happy-icon feedback="feedback_friday"/>
+                          <x-normal-icon feedback="feedback_friday"/> 
+                          <x-sad-icon feedback="feedback_friday"/>
+                          <button 
+                           type="submit"
+                           class="mt-4 border border-black text-xs text-white bg-black p-1 rounded hover:bg-white hover:text-black">Enviar feedback</button>
+                           <p class="mt-2 text-xs text-red-600">@error('feedback_friday') {{ $message }} @enderror</p>
+                        </form>
                           
                        @else 
                         <p class="mt-10 mb-4">
@@ -208,9 +235,18 @@
                        <hr class="mt-10 pt-4" />
                        <p class="mb-2">¿Qué tal el entrenamiento?</p>
                          
-                       <x-happy-icon feedback="feedback_saturday"/>
-                       <x-normal-icon feedback="feedback_saturday"/> 
-                       <x-sad-icon feedback="feedback_saturday"/>
+                       <form method="POST" action="{{route('storefeedbacksaturday',$workout)}}">
+                          @method('PUT')
+                          @csrf 
+                          <input type="number" name="feedback_saturday" class="hidden">
+                          <x-happy-icon feedback="feedback_saturday"/>
+                          <x-normal-icon feedback="feedback_saturday"/> 
+                          <x-sad-icon feedback="feedback_saturday"/>
+                          <button 
+                           type="submit"
+                           class="mt-4 border border-black text-xs text-white bg-black p-1 rounded hover:bg-white hover:text-black">Enviar feedback</button>
+                           <p class="mt-2 text-xs text-red-600">@error('feedback_saturday') {{ $message }} @enderror</p>
+                        </form>
                           
                        @else 
                         <p class="mt-10 mb-4">
@@ -239,9 +275,18 @@
                        <hr class="mt-10 pt-4" />
                        <p class="mb-2">¿Qué tal el entrenamiento?</p>
                          
-                       <x-happy-icon feedback="feedback_sunday"/>
-                       <x-normal-icon feedback="feedback_sunday"/> 
-                       <x-sad-icon feedback="feedback_sunday"/>
+                       <form method="POST" action="{{route('storefeedbacksunday',$workout)}}">
+                          @method('PUT')
+                          @csrf 
+                          <input type="number" name="feedback_sunday" class="hidden">
+                          <x-happy-icon feedback="feedback_sunday"/>
+                          <x-normal-icon feedback="feedback_sunday"/> 
+                          <x-sad-icon feedback="feedback_sunday"/>
+                          <button 
+                           type="submit"
+                           class="mt-4 border border-black text-xs text-white bg-black p-1 rounded hover:bg-white hover:text-black">Enviar feedback</button>
+                           <p class="mt-2 text-xs text-red-600">@error('feedback_sunday') {{ $message }} @enderror</p>
+                        </form>
                           
                        @else 
                         <p class="mt-10 mb-4">
