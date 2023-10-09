@@ -24,6 +24,7 @@ Route::controller(PageController::class)->group(function () {
     Route::get('/duplicate/{workout}',                       'duplicate')->middleware(['auth'])->name('duplicate');
     Route::get('/create-athlete',                            'createAthlete')->middleware(['auth'])->name('create-athlete');
     Route::get('/edit-athlete/{user}',                       'editAthlete')->middleware(['auth'])->name('edit-athlete');
+    Route::get('/profile/{user}',                            'profile')->middleware(['auth'])->name('profile');
     Route::get('/create-workout',                            'createWorkout')->middleware(['auth'])->name('create-workout');
     Route::get('/edit-workout/{workout}',                    'editWorkout')->middleware(['auth'])->name('edit-workout');
     Route::post('/storeathlete',                             'storeathlete')->middleware(['auth'])->name('storeathlete');

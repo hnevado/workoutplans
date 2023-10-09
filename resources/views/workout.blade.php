@@ -45,7 +45,9 @@
                        @if (is_null($workout->feedback_monday))
                         
                        <hr class="mt-10 pt-4" />
-                       <p class="mb-2">¿Qué tal el entrenamiento?</p>
+
+                       @if (!$isCoach)
+                        <p class="mb-2">¿Qué tal el entrenamiento?</p>
                          <form method="POST" action="{{route('storefeedbackmonday',$workout)}}">
                           @method('PUT')
                           @csrf 
@@ -58,6 +60,7 @@
                            class="mt-4 border border-black text-xs text-white bg-black p-1 rounded hover:bg-white hover:text-black">Enviar feedback</button>
                            <p class="mt-2 text-xs text-red-600">@error('feedback_monday') {{ $message }} @enderror</p>
                           </form>
+                        @endif
                        @else 
                         <p class="mt-10 mb-4">
                          @if ($workout->feedback_monday == 0)
@@ -82,9 +85,11 @@
                        @if (is_null($workout->feedback_tuesday))
                         
                        <hr class="mt-10 pt-4" />
-                       <p class="mb-2">¿Qué tal el entrenamiento?</p>
+
+                       @if (!$isCoach)
+                        <p class="mb-2">¿Qué tal el entrenamiento?</p>
                          
-                       <form method="POST" action="{{route('storefeedbacktuesday',$workout)}}">
+                        <form method="POST" action="{{route('storefeedbacktuesday',$workout)}}">
                           @method('PUT')
                           @csrf 
                           <input type="number" name="feedback_tuesday" class="hidden">
@@ -95,8 +100,8 @@
                            type="submit"
                            class="mt-4 border border-black text-xs text-white bg-black p-1 rounded hover:bg-white hover:text-black">Enviar feedback</button>
                            <p class="mt-2 text-xs text-red-600">@error('feedback_tuesday') {{ $message }} @enderror</p>
-                        </form>
-                          
+                         </form>
+                        @endif
                        @else 
                         <p class="mt-10 mb-4">
                          @if ($workout->feedback_tuesday == 0)
@@ -120,9 +125,11 @@
                        @if (is_null($workout->feedback_wednesday))
                         
                        <hr class="mt-10 pt-4" />
-                       <p class="mb-2">¿Qué tal el entrenamiento?</p>
+
+                       @if (!$isCoach)
+                        <p class="mb-2">¿Qué tal el entrenamiento?</p>
                          
-                       <form method="POST" action="{{route('storefeedbackwednesday',$workout)}}">
+                        <form method="POST" action="{{route('storefeedbackwednesday',$workout)}}">
                           @method('PUT')
                           @csrf 
                           <input type="number" name="feedback_wednesday" class="hidden">
@@ -133,8 +140,8 @@
                            type="submit"
                            class="mt-4 border border-black text-xs text-white bg-black p-1 rounded hover:bg-white hover:text-black">Enviar feedback</button>
                            <p class="mt-2 text-xs text-red-600">@error('feedback_wednesday') {{ $message }} @enderror</p>
-                        </form>
-                          
+                         </form>
+                        @endif
                        @else 
                         <p class="mt-10 mb-4">
                          @if ($workout->feedback_wednesday == 0)
@@ -157,9 +164,11 @@
                        @if (is_null($workout->feedback_thursday))
                         
                        <hr class="mt-10 pt-4" />
-                       <p class="mb-2">¿Qué tal el entrenamiento?</p>
+
+                       @if (!$isCoach)
+                        <p class="mb-2">¿Qué tal el entrenamiento?</p>
                          
-                       <form method="POST" action="{{route('storefeedbackthursday',$workout)}}">
+                        <form method="POST" action="{{route('storefeedbackthursday',$workout)}}">
                           @method('PUT')
                           @csrf 
                           <input type="number" name="feedback_thursday" class="hidden">
@@ -170,8 +179,8 @@
                            type="submit"
                            class="mt-4 border border-black text-xs text-white bg-black p-1 rounded hover:bg-white hover:text-black">Enviar feedback</button>
                            <p class="mt-2 text-xs text-red-600">@error('feedback_thursday') {{ $message }} @enderror</p>
-                        </form>
-                          
+                         </form>
+                        @endif
                        @else 
                         <p class="mt-10 mb-4">
                          @if ($workout->feedback_thursday == 0)
@@ -195,9 +204,10 @@
                        @if (is_null($workout->feedback_friday))
                         
                        <hr class="mt-10 pt-4" />
-                       <p class="mb-2">¿Qué tal el entrenamiento?</p>
+                       @if (!$isCoach)
+                        <p class="mb-2">¿Qué tal el entrenamiento?</p>
                          
-                       <form method="POST" action="{{route('storefeedbackfriday',$workout)}}">
+                        <form method="POST" action="{{route('storefeedbackfriday',$workout)}}">
                           @method('PUT')
                           @csrf 
                           <input type="number" name="feedback_friday" class="hidden">
@@ -208,8 +218,8 @@
                            type="submit"
                            class="mt-4 border border-black text-xs text-white bg-black p-1 rounded hover:bg-white hover:text-black">Enviar feedback</button>
                            <p class="mt-2 text-xs text-red-600">@error('feedback_friday') {{ $message }} @enderror</p>
-                        </form>
-                          
+                         </form>
+                        @endif
                        @else 
                         <p class="mt-10 mb-4">
                          @if ($workout->feedback_friday == 0)
@@ -233,9 +243,11 @@
                        @if (is_null($workout->feedback_saturday))
                         
                        <hr class="mt-10 pt-4" />
-                       <p class="mb-2">¿Qué tal el entrenamiento?</p>
+
+                       @if (!$isCoach)
+                        <p class="mb-2">¿Qué tal el entrenamiento?</p>
                          
-                       <form method="POST" action="{{route('storefeedbacksaturday',$workout)}}">
+                        <form method="POST" action="{{route('storefeedbacksaturday',$workout)}}">
                           @method('PUT')
                           @csrf 
                           <input type="number" name="feedback_saturday" class="hidden">
@@ -246,8 +258,8 @@
                            type="submit"
                            class="mt-4 border border-black text-xs text-white bg-black p-1 rounded hover:bg-white hover:text-black">Enviar feedback</button>
                            <p class="mt-2 text-xs text-red-600">@error('feedback_saturday') {{ $message }} @enderror</p>
-                        </form>
-                          
+                         </form>
+                        @endif
                        @else 
                         <p class="mt-10 mb-4">
                          @if ($workout->feedback_saturday == 0)
@@ -273,9 +285,10 @@
                        @if (is_null($workout->feedback_sunday))
                         
                        <hr class="mt-10 pt-4" />
-                       <p class="mb-2">¿Qué tal el entrenamiento?</p>
+                       @if (!$isCoach)
+                        <p class="mb-2">¿Qué tal el entrenamiento?</p>
                          
-                       <form method="POST" action="{{route('storefeedbacksunday',$workout)}}">
+                        <form method="POST" action="{{route('storefeedbacksunday',$workout)}}">
                           @method('PUT')
                           @csrf 
                           <input type="number" name="feedback_sunday" class="hidden">
@@ -286,8 +299,8 @@
                            type="submit"
                            class="mt-4 border border-black text-xs text-white bg-black p-1 rounded hover:bg-white hover:text-black">Enviar feedback</button>
                            <p class="mt-2 text-xs text-red-600">@error('feedback_sunday') {{ $message }} @enderror</p>
-                        </form>
-                          
+                         </form>
+                        @endif
                        @else 
                         <p class="mt-10 mb-4">
                          @if ($workout->feedback_sunday == 0)
@@ -312,12 +325,20 @@
                     <div class="mt-12 border p-2 text-center bg-slate-50">
                   
                         <h2 class="mb-2 mt-2 font-bold text-2xl">
+                        @if (!$isCoach)
                             ¿Qué tal ha ido la semana? 
+                        @else 
+                            La semana de tu atleta
+                        @endif 
                         </h2>
                         
                         <p class="mt-4 mb-8">
+                         @if (!$isCoach)
                           Puedes dejar comentarios aquí para tu entrenador indicándole como te has encontrado durante la semana, para que así 
                           lo tenga en cuenta para futuros planes de entrenamiento.
+                         @else 
+                          Aquí puedes ver los comentarios que te ha hecho tu atleta a nivel general de la semana.
+                         @endif
                         </p>
 
                         <form name="comments" method="POST" action="{{route('storecomment',$workout)}}">
@@ -335,7 +356,7 @@
                                readonly
                               @endif
                               
-                              >{{$workout->comments_athlete}}</textarea>
+                              >@if (!is_null($workout->comments_athlete)) {{$workout->comments_athlete}} @else Tu atleta no ha hecho ningún comentario @endif</textarea>
                               <span class="text-xs text-red-600">@error('comments_athlete') {{ $message }} @enderror</span>
                               @if (!is_null(Auth::user()->coach))
                                <input class="mt-8 bg-gray-800 text-white rounded px-4 py-2" type="submit" value="GUARDAR">

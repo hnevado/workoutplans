@@ -114,10 +114,19 @@ class PageController extends Controller
 
     public function workout(Workout $workout)
     {
-
+        //Si soy el coach o el athleta, te dejo ver el workout
         if ($workout->coach == Auth::user()->id || $workout->athlete == Auth::user()->id) 
-          return view("workout", ['workout' => $workout]);
-        
+        {
+            //Para saber si quien está viendo el detalle del workout es el coach o el atleta.
+            //Si es el coach no quiero que pueda enviar feedback.
+            if ($workout->coach == Auth::user()->id)
+             $isCoach=true;
+            else
+             $isCoach=false;
+
+
+          return view("workout", ['workout' => $workout, 'isCoach' => $isCoach]);
+        }
         abort(404);
     }
 
@@ -473,6 +482,13 @@ class PageController extends Controller
 
     }
 
+    public function profile(User $user)
+    {
+
+
+        return view("profile", ['user' => $user]);
+
+    }
 
     public function updateathlete(User $user, Request $request)
     {
@@ -480,15 +496,15 @@ class PageController extends Controller
         if ($user->coach == Auth::user()->id)
         {
          
+            /* 'image' => 'nullable|image|mimes:jpg,png,jpeg,gif|max:6144', */
             $request->validate([
 
                 'name' => 'required',
                 'email' => 'required|unique:users,email,'.$user->id,
-                'image' => 'nullable|image|mimes:jpg,png,jpeg,gif|max:6144',
                 'notes' => 'nullable'
 
             ]);
-
+            /*
             if (!is_null($request->image))
             {
 
@@ -496,7 +512,8 @@ class PageController extends Controller
             }
             else 
             $image_path = NULL;
-
+            */
+            $image_path = NULL;
 
             if (is_null($request->password))
             {
@@ -538,35 +555,33 @@ class PageController extends Controller
 
     public function storeathlete(Request $request)
     {
-
+        /*'image' => 'nullable|image|mimes:jpg,png,jpeg,gif|max:6144',*/
         $request->validate([
 
             'name' => 'required',
             'email' => 'required|unique:users,email',
-            'password' => 'required',
-            'image' => 'nullable|image|mimes:jpg,png,jpeg,gif|max:6144',
             'notes' => 'nullable'
         ]);
 
         
-        if (!is_null($request->image))
+       /* if (!is_null($request->image))
         {
 
-            /* 
-            LA IMAGEN SE GUARDA EN storage\app\public\img 
-             LUEGO LA MUESTRO COMO {{ url('storage/'.$gift->image) }}
-            */
+            // LA IMAGEN SE GUARDA EN storage\app\public\img  y LUEGO LA MUESTRO COMO {{ url('storage/'.$gift->image) }}
             $image_path = $request->file('image')->store('img', 'public');
         }
         else 
           $image_path = NULL;
+        */
 
+        $image_path=NULL;
+        $password=fake()->password();
 
         $user = User::create([
 
             'name' => $request->name,
             'email' => $request->email,
-            'password' => Hash::make($request->password),
+            'password' => Hash::make($password),
             'image' => $image_path,
             'notes' => $request->notes,
             'coach' => Auth::user()->id,
@@ -575,7 +590,7 @@ class PageController extends Controller
 
         $mailData = [
             'email' => $request->email,
-            'password' => $request->password
+            'password' => $password
         ];
 
         Mail::to($request->email)->send(new NotifyRegister($mailData));
