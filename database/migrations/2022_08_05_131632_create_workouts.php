@@ -23,7 +23,9 @@ return new class extends Migration
             $table->date('end_date');
 
             $table->unsignedBigInteger('coach'); //Qué entrenador ha creado ese plan de entrenamiento 
-            $table->unsignedBigInteger('athlete')->nullable(); //A qué atleta va ese entrenamiento. Si es nulo, ese plan de entrenamiento será público
+            /*$table->unsignedBigInteger('athlete')->nullable(); //A qué atleta va ese entrenamiento. Si es nulo, ese plan de entrenamiento será público */
+            $table->unsignedBigInteger('athlete');
+            $table->foreign('athlete')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
 
             $table->longText('comments_coach')->nullable();
             $table->longText('comments_athlete')->nullable();

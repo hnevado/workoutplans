@@ -32,6 +32,7 @@ class Workout extends Model
         'feedback_sunday',
     ];
 
+    protected $with = ['user'];
 
     public function user()
     {
