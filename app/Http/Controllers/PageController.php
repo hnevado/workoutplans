@@ -127,7 +127,7 @@ class PageController extends Controller
 
           return view("workout", ['workout' => $workout, 'isCoach' => $isCoach]);
         }
-        abort(404);
+        abort(403);
     }
 
     public function editWorkout(Workout $workout)
@@ -140,7 +140,7 @@ class PageController extends Controller
         if ($workout->coach == Auth::user()->id) 
             return view("coach/editWorkout", ['workout' => $workout, 'atletas' => $atletas]);
 
-        abort(404);
+        abort(403);
     }
 
     public function createWorkout(Workout $workout)
@@ -170,7 +170,7 @@ class PageController extends Controller
             return view("coach/editWorkout", ['workout' => $newWorkout, 'atletas' => $atletas]);
         }
 
-        abort(404);
+        abort(403);
 
     } 
 
@@ -194,7 +194,7 @@ class PageController extends Controller
             return back();
          }
          else 
-           abort(404);
+           abort(403);
 
 
     }
@@ -218,7 +218,7 @@ class PageController extends Controller
             return back();
          }
          else 
-           abort(404);
+           abort(403);
 
 
     }
@@ -242,7 +242,7 @@ class PageController extends Controller
             return back();
          }
          else 
-           abort(404);
+           abort(403);
 
 
     }
@@ -266,7 +266,7 @@ class PageController extends Controller
             return back();
          }
          else 
-           abort(404);
+           abort(403);
 
 
     }
@@ -291,7 +291,7 @@ class PageController extends Controller
             return back();
          }
          else 
-           abort(404);
+           abort(403);
 
 
     }
@@ -340,8 +340,9 @@ class PageController extends Controller
 
             return back();
          }
-         else 
-           abort(404);
+         
+        
+         abort(403);
 
 
     }
@@ -490,6 +491,20 @@ class PageController extends Controller
 
     }
 
+    public function newCoach($email,$idCoach)
+    {
+        
+        $email_atleta = base64_decode($email);
+        $idCoach = base64_decode($idCoach);
+
+        $coach=User::where('id',$idCoach)->value('name');
+
+        if (Auth::user()->email === $email_atleta)
+          return view("newcoach",['email_atleta' => $email_atleta, 'coach' => $coach]);
+
+        abort(403);
+
+    }
     public function updateathlete(User $user, Request $request)
     {
 
@@ -556,14 +571,7 @@ class PageController extends Controller
     public function storeathlete(Request $request)
     {
         /*'image' => 'nullable|image|mimes:jpg,png,jpeg,gif|max:6144',*/
-        $request->validate([
 
-            'name' => 'required',
-            'email' => 'required|unique:users,email',
-            'notes' => 'nullable'
-        ]);
-
-        
        /* if (!is_null($request->image))
         {
 
@@ -574,29 +582,43 @@ class PageController extends Controller
           $image_path = NULL;
         */
 
-        $image_path=NULL;
-        $password=fake()->password();
+        if (User::where('email', $request->email)->exists()) {
+            //Si ya existe, se le solicita que cambie de coach
 
-        $user = User::create([
+             return view("changecoach", ['name' => $request->name, 'email' => $request->email, 'coach' => Auth::user()->id]);
+        }
+        else 
+        {
+            $request->validate([
 
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($password),
-            'image' => $image_path,
-            'notes' => $request->notes,
-            'coach' => Auth::user()->id,
+                'name' => 'required',
+                'email' => 'required|unique:users,email',
+                'notes' => 'nullable'
+            ]);
 
-        ]);
+            $image_path=NULL;
+            $password=fake()->password();
 
-        $mailData = [
-            'email' => $request->email,
-            'password' => $password
-        ];
+            $user = User::create([
 
-        Mail::to($request->email)->send(new NotifyRegister($mailData));
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => Hash::make($password),
+                'image' => $image_path,
+                'notes' => $request->notes,
+                'coach' => Auth::user()->id,
 
-        return redirect()->route('dashboard');
+            ]);
 
+            $mailData = [
+                'email' => $request->email,
+                'password' => $password
+            ];
+
+            Mail::to($request->email)->send(new NotifyRegister($mailData));
+
+            return redirect()->route('dashboard');
+       }
     }
 
 
