@@ -12,7 +12,7 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                 <span class="font-bold">{{$coach}}</span> quiere que ser tu entrenador a partir de ahora y llevar tu plan de entrenamiento.
-                ¿Quieres cambiar tu entrenador?
+                ¿Quieres cambiar tu entrenador? {{$email_atleta}}
 
                 </div>
             </div>

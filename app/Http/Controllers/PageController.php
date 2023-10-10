@@ -12,6 +12,7 @@ use Mail;
 use App\Mail\NotifyWorkout;
 use App\Mail\NotifyRegister;
 use App\Mail\NotifyUpdate;
+use App\Mail\NotifyCoach;
 
 class PageController extends Controller
 {
@@ -584,8 +585,16 @@ class PageController extends Controller
 
         if (User::where('email', $request->email)->exists()) {
             //Si ya existe, se le solicita que cambie de coach
+            
+  
+            $mailData = [
+                'coach' => Auth::user()->name,
+                'url' => "http://localhost:8000/new-coach/".base64_encode($request->email)."/".base64_encode(Auth::user()->id)."/"
+            ];
 
-             return view("changecoach", ['name' => $request->name, 'email' => $request->email, 'coach' => Auth::user()->id]);
+            Mail::to($request->email)->send(new NotifyCoach($mailData));
+
+            return view("changecoach", ['name' => $request->name, 'email' => $request->email, 'coach' => Auth::user()->id]);
         }
         else 
         {
