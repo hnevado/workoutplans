@@ -27,9 +27,10 @@ Route::controller(PageController::class)->group(function () {
     Route::get('/profile/{user}',                            'profile')->middleware(['auth'])->name('profile');
     Route::get('/create-workout',                            'createWorkout')->middleware(['auth'])->name('create-workout');
     Route::get('/edit-workout/{workout}',                    'editWorkout')->middleware(['auth'])->name('edit-workout');
-    Route::get('/new-coach/{email}/{id}',          'newCoach')->middleware(['auth'])->name('new-coach');
+    Route::get('/new-coach/{email}/{id}',                    'newCoach')->middleware(['auth'])->name('new-coach');
     Route::post('/storeathlete',                             'storeathlete')->middleware(['auth'])->name('storeathlete');
     Route::post('/storeworkout',                             'storeworkout')->middleware(['auth'])->name('storeworkout');
+    Route::put('/change-coach-accepted/{user}',              'changecoachaccepted')->middleware(['auth'])->name('changecoachaccepted');
     Route::put('/storefeedbackmonday/{workout}',             'storefeedbackmonday')->middleware(['auth'])->name('storefeedbackmonday');
     Route::put('/storefeedbacktuesday/{workout}',            'storefeedbacktuesday')->middleware(['auth'])->name('storefeedbacktuesday');
     Route::put('/storefeedbackwednesday/{workout}',          'storefeedbackwednesday')->middleware(['auth'])->name('storefeedbackwednesday');

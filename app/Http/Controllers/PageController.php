@@ -89,9 +89,12 @@ class PageController extends Controller
         }
         else
         {
-          
+        
+           $datosCoach=User::where('id','=',$usuario->coach)->first();
+           
+
           $workouts=Workout::where('athlete','=',$usuario->id)->orderBy('start_date','desc')->take(12)->get();  
-          return view("athlete",['workouts' => $workouts]); //Es atleta
+          return view("athlete",['workouts' => $workouts, 'coach' => $datosCoach->name]); //Es atleta
         }
     }
 
@@ -495,13 +498,14 @@ class PageController extends Controller
     public function newCoach($email,$idCoach)
     {
         
+        $url='http://localhost:8000/new-coach/'.$email."/".$idCoach."/";
         $email_atleta = base64_decode($email);
         $idCoach = base64_decode($idCoach);
 
         $coach=User::where('id',$idCoach)->value('name');
 
         if (Auth::user()->email === $email_atleta)
-          return view("newcoach",['email_atleta' => $email_atleta, 'coach' => $coach]);
+          return view("newcoach",['email_atleta' => $email_atleta, 'coach' => $coach, 'idCoach' => $idCoach, 'url' => $url]);
 
         abort(403);
 
@@ -568,6 +572,26 @@ class PageController extends Controller
 
 
     }
+
+
+    public function changecoachaccepted (Request $request, User $user)
+    {
+
+        if ($request->idUsuario == Auth::user()->id)
+        {
+            
+            $user->update([
+                'coach' => $request->idCoach
+            ]);
+
+            return redirect()->route('dashboard');
+        }
+
+        abort(403);
+
+    }
+
+
 
     public function storeathlete(Request $request)
     {

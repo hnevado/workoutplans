@@ -49,7 +49,7 @@
 
                     @endforeach
                    @else 
-                     <p>Aún no tienes planes de entrenamiento. Recibirás un email cuando tu entrenador te asigne un plan</p>
+                     <p>Aún no tienes planes de entrenamiento. Recibirás un email cuando <span class="font-bold">tu entrenador {{$coach}}</span> te asigne un plan</p>
                    @endif
                 </div>
             </div>
