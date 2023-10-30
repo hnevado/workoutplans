@@ -119,17 +119,19 @@ class PageController extends Controller
     public function workout(Workout $workout)
     {
         //Si soy el coach o el athleta, te dejo ver el workout
-        if ($workout->coach == Auth::user()->id || $workout->athlete == Auth::user()->id) 
+        //if ($workout->coach == Auth::user()->id || $workout->athlete == Auth::user()->id) 
+        
+        if ($this->authorize('view-workout', $workout))
         {
             //Para saber si quien está viendo el detalle del workout es el coach o el atleta.
             //Si es el coach no quiero que pueda enviar feedback.
             if ($workout->coach == Auth::user()->id)
-             $isCoach=true;
+                $isCoach=true;
             else
-             $isCoach=false;
+                $isCoach=false;
 
 
-          return view("workout", ['workout' => $workout, 'isCoach' => $isCoach]);
+            return view("workout", ['workout' => $workout, 'isCoach' => $isCoach]);
         }
         abort(403);
     }
