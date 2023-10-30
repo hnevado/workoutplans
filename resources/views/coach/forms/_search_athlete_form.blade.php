@@ -8,13 +8,13 @@
        placeholder="Nombre del atleta"
        value="{{$search}}">
       <button 
-       class="bg-gray-800 text-white rounded px-4 py-2" 
+       class="bg-orange-300 text-black rounded px-4 py-2 font-bold" 
         type="submit">
         Buscar
       </button>
       <a 
        href="{{route('dashboard')}}"
-       class="bg-gray-800 text-white rounded px-4 py-2">
+       class="bg-orange-300 text-black rounded px-4 py-2 font-bold">
         Reiniciar
       </a>
     </div>

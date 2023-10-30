@@ -15,12 +15,12 @@
         </style>
         @vite('resources/css/app.css')
     </head>
-    <body class="bg-gray-100">
+    <body class="bg-orange-100">
         
-            <section class="py-4 bg-gray-100">
+            <section class="py-4 bg-white">
                 <div class="container max-w-screen-xl mx-auto px-4">
 
-                    <nav class="flex items-center justify-between mb-20 bg-gray-200 p-4">
+                    <nav class="flex items-center justify-between mb-20 bg-white p-4">
                         <span class="font-bold">WorkoutPlans</span>
                         @if (Route::has('login'))
                             <div class="text-right">
@@ -46,21 +46,21 @@
                     <div class="text-center mb-8">
                         <div class="flex justify-center mb-16">
                             <img 
-                              src="https://scontent.fvlc2-1.fna.fbcdn.net/v/t39.30808-6/346620018_252044414033435_9151581157931305908_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=a2f6c7&_nc_ohc=WCU6aKkt6wkAX9lP_fO&_nc_oc=AQkP23e6_7S-fA3ORTvEVerHIE-RxnzVVEyqrt3aLHyYEl4J9rPpIF8TqBUhbDEjbqU&_nc_ht=scontent.fvlc2-1.fna&oh=00_AfDXf9fNi25OeW4AroSYR3ZLLg6faSurX4j4Fe4u6uhD-A&oe=6529EF40" 
+                              src="{{asset('img/logotipo.png')}}" 
                               alt="Carreras populares VLC"
                               class="rounded-full w-80">
                         </div>
 
                         <h6 class="font-medium text-gray-600 text-lg md:text-2xl uppercase mb-8">WorkoutPlans</h6>
 
-                        <h1 class="font-normal text-gray-900 text-4xl md:text-7xl leading-none mb-8">La plataforma de entrenamiento todo en uno</h1>
+                        <h1 class="font-bold text-orange-400 text-4xl md:text-7xl leading-none mb-8">La plataforma de entrenamiento todo en uno</h1>
 
                         <p class="font-normal text-gray-600 text-md md:text-xl mb-16">
                           Software de gestión de planes de entrenamiento para atletas - entrenadores. Simplifica la comunicación, centraliza los datos 
                           y mejora el rendimiento.
                         </p>
 
-                        <a href="#" class="mb-4 px-7 py-3 md:px-9 md:py-4 font-medium md:font-semibold bg-gray-700 text-gray-50 text-sm rounded-md hover:bg-gray-50 hover:text-gray-700 transition ease-linear duration-500">EMPEZAR</a>
+                        <a href="#" class="bg-orange-300 text-black rounded px-8 py-4 font-bold">EMPEZAR</a>
                     </div>
 
                 </div>
@@ -73,11 +73,11 @@
 
                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                         <div class="bg-gray-50 px-8 py-10 rounded-md">
-                            <div class="w-20 py-6 flex justify-center bg-gray-100 rounded-md mb-4">
+                            <div class="w-20 py-6 flex justify-center bg-orange-200 rounded-md mb-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-activity"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
                             </div>
 
-                            <h4 class="font-medium text-gray-700 text-lg mb-4">AHORRA TIEMPO</h4>
+                            <h4 class="text-orange-400 font-bold text-lg mb-4">AHORRA TIEMPO</h4>
 
                             <p class="font-normal text-gray-500 text-md">
 
@@ -88,11 +88,11 @@
                         </div>
                         
                         <div class="bg-gray-50 px-8 py-10 rounded-md">
-                            <div class="w-20 py-6 flex justify-center bg-gray-100 rounded-md mb-4">
+                            <div class="w-20 py-6 flex justify-center bg-orange-200 rounded-md mb-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-codesandbox"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="7.5 4.21 12 6.81 16.5 4.21"></polyline><polyline points="7.5 19.79 7.5 14.6 3 12"></polyline><polyline points="21 12 16.5 14.6 16.5 19.79"></polyline><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
                             </div>
 
-                            <h4 class="font-medium text-gray-700 text-lg mb-4">GESTIONA A TUS ATLETAS</h4>
+                            <h4 class="text-orange-400 font-bold text-lg mb-4">GESTIONA A TUS ATLETAS</h4>
 
                             <p class="font-normal text-gray-500 text-md">
                                 Digitaliza tus procesos, ahorra tiempo y mejora la comunicación con nuestros servicios intuitivos y fáciles de usar.
@@ -102,11 +102,11 @@
                         </div>
                         
                         <div class="bg-gray-50 px-8 py-10 rounded-md">
-                            <div class="w-20 py-6 flex justify-center bg-gray-100 rounded-md mb-4">
+                            <div class="w-20 py-6 flex justify-center bg-orange-200 rounded-md mb-4">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-coffee"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
                             </div>
 
-                            <h4 class="font-medium text-gray-700 text-lg mb-4">PLAN DE ENTRENAMIENTO GRUPAL</h4>
+                            <h4 class="text-orange-400 font-bold text-lg mb-4">PLAN DE ENTRENAMIENTO GRUPAL</h4>
 
                             <p class="font-normal text-gray-500 text-md">
                                 ¿Tienes varios atletas con el mismo objetivo y que van a seguir el mismo plan de entrenamiento? ¡Sin problema! Crea un grupo, añadelos y 
